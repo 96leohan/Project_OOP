@@ -1,1 +1,160 @@
 # -Project_OOP
+# Mã nguồn lựa chọn
+
+## Game cờ vua
+
+🔗 [Video Demo trên YouTube](https://www.youtube.com/watch?v=_4EuZI8Q8cs)
+
+---
+
+### 1. Thành viên nhóm
+
+- Trần Lê Hân
+- Phạm Phúc An Khang - 20120303
+
+---
+
+### 2. Các công việc các thành viên đã thực hiện
+
+_(Nội dung cần bổ sung cụ thể)_
+
+---
+
+### 3. Tỉ lệ đóng góp của các thành viên vào dự án (tổng 100%)
+
+_(Nội dung cần bổ sung cụ thể)_
+
+---
+
+### 4. Tỉ lệ điểm của các thành viên
+
+_(Nội dung cần bổ sung cụ thể)_
+
+---
+
+### 5. Mô tả cụ thể cho các yêu cầu
+
+#### 🧑‍🤝‍🧑 Teamwork
+
+- Phân công và theo dõi tiến độ công việc
+- Ghi chép biên bản họp nhóm
+
+#### 🎨 UI/UX
+
+- Giao diện chương trình thân thiện, rõ ràng
+- Cung cấp trải nghiệm người dùng mượt mà
+
+#### 🧱 Cài đặt lại chức năng của mã nguồn mẫu theo hướng đối tượng
+
+#### 🔧 Các chức năng thêm và cải tiến
+
+##### ✅ Cải thiện gameplay
+
+- **Nhập thành (Castling)**: Kiểm tra đầy đủ các điều kiện nhập thành:
+  - Không có quân cản
+  - Vua và xe chưa từng di chuyển
+  - Vua không bị chiếu hoặc đi qua ô bị chiếu
+- **Bắt quân qua đường (En Passant)**
+- **Phong cấp (Pawn Promotion)**
+- **Chiếu và Chiếu hết (Check & Checkmate)**
+- **Hòa cờ (Stalemate)**
+
+##### 📜 Ghi lại lịch sử ván cờ (Move History)
+
+- Lưu danh sách các nước đi đã thực hiện
+
+##### ⏱️ Hẹn giờ (Timers)
+
+- Đồng hồ đếm ngược với các chế độ: blitz, rapid, classical
+
+##### 🤖 Chơi với máy (AI Opponent)
+
+- Đối thủ AI có nhiều cấp độ khó
+
+##### 🧩 Cải thiện giao diện người dùng
+
+- Hiển thị nước đi hợp lệ
+- Thông báo và phản hồi các sự kiện: nước đi sai, chiếu, chiếu hết...
+
+#### 🧭 Giao diện bố trí hợp lý
+
+#### 🏗️ Kiến trúc phần mềm + Design Pattern
+
+#### ✅ Đảm bảo chất lượng
+
+##### 🔣 Coding Convention
+
+###### 1. Quy tắc đặt tên (Naming Conventions)
+
+| Đối tượng      | Quy tắc                       | Ví dụ                       |
+| -------------- | ----------------------------- | --------------------------- |
+| Biến           | `camelCase`                   | `playerScore`, `maxSpeed`   |
+| Hằng số        | `UPPER_CASE_WITH_UNDERSCORES` | `MAX_BUFFER_SIZE`, `PI`     |
+| Hàm            | `camelCase`                   | `calculateDistance()`       |
+| Lớp            | `PascalCase`                  | `GameObject`, `UserManager` |
+| Thành viên lớp | `m_camelCase` hoặc hậu tố `_` | `m_position`, `speed_`      |
+| Tên file       | `snake_case`                  | `game_engine.cpp`           |
+
+###### 2. Quy tắc định dạng (Formatting)
+
+- `{` mở ở cùng dòng hoặc dòng mới (nhất quán theo style đã chọn)
+- Có dấu cách sau: `,`, `if`, `for`, `while`, `switch`
+- Thụt lề: 4 spaces, **không dùng tab**
+
+###### 3. Cấu trúc chương trình
+
+- Dùng `#pragma once` hoặc include guard
+- Tách `.h` (khai báo) và `.cpp` (định nghĩa)
+- Dùng forward declaration nếu có thể
+
+###### 4. Quy tắc lập trình (Best Practices)
+
+- Không dùng `using namespace std;` trong header
+- Sử dụng `const`, `constexpr`, `noexcept` đúng chỗ
+- Dùng `unique_ptr`, `shared_ptr` thay cho con trỏ raw (C++11+)
+- Dùng `nullptr` thay `NULL`
+- Kiểm tra `nullptr` trước khi dùng
+- Tránh lặp code — viết hàm hỗ trợ
+- Gom nhóm hàm liên quan
+- Ưu tiên `enum class` thay vì `enum`
+
+###### 5. Quy tắc comment
+
+- `//` cho ghi chú thông thường
+- `/** */` hoặc `///` cho documentation (Doxygen)
+
+###### 6. Tổ chức file
+
+**Trong file `.h`:**
+
+```cpp
+// 1. Include guard hoặc #pragma once
+// 2. Includes cần thiết
+// 3. Forward declaration
+// 4. Khai báo class, typedef, enum
+```
+
+**Trong file `.cpp`:**
+
+```cpp
+/// 1. Include chính (.h tương ứng)
+// 2. Các include còn lại
+// 3. Implementation
+```
+
+### 🧪 Kiểm thử bằng Unit Test
+
+Xây dựng Test Plan
+Viết Test Case
+Tạo Test Report
+
+### 📄 Tài liệu mô tả kiến trúc phần mềm và các module
+
+Vẽ Class Diagram
+Tạo tài liệu mô tả:
+Các lớp trong hệ thống
+Ý nghĩa các hàm chính
+
+### 6 Link video demo
+
+🔗 Link video demo
