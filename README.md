@@ -92,7 +92,7 @@ _(Nội dung cần bổ sung cụ thể)_
 | Hằng số        | `UPPER_CASE_WITH_UNDERSCORES` | `MAX_BUFFER_SIZE`, `PI`     |
 | Hàm            | `camelCase`                   | `calculateDistance()`       |
 | Lớp            | `PascalCase`                  | `GameObject`, `UserManager` |
-| Thành viên lớp | `m_camelCase` hoặc hậu tố `_` | `m_position`, `speed_`      |
+| Thành viên lớp | `_camelCase`                  | `_position`                 |
 | Tên file       | `snake_case`                  | `game_engine.cpp`           |
 
 ###### 2. Quy tắc định dạng (Formatting)
@@ -103,7 +103,7 @@ _(Nội dung cần bổ sung cụ thể)_
 
 ###### 3. Cấu trúc chương trình
 
-- Dùng `#pragma once` hoặc include guard
+- Dùng include guard 
 - Tách `.h` (khai báo) và `.cpp` (định nghĩa)
 - Dùng forward declaration nếu có thể
 
