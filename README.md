@@ -75,6 +75,13 @@ _(Nội dung cần bổ sung cụ thể)_
 
 - Hiển thị nước đi hợp lệ
 - Thông báo và phản hồi các sự kiện: nước đi sai, chiếu, chiếu hết...
+- Thêm chức năng đầu hàng, restart trận đấu
+- Thêm màn hình Home
+- Thêm menu setting bao gồm: chỉnh độ khó, chọn chế độ, credit, nút thoát ứng dụng (exit), 
+- Ngôn ngữ: Lựa chọn ngôn ngữ hiển thị trong trò chơi, tiếng Anh và Tiếng Việt
+- Thống kê: Số ván đã chơi, số ván thắng, thua, hòa.
+- Hướng dẫn/Luật chơi (Tutorial/Rules - tùy chọn):cung cấp thông tin về luật chơi cờ vua cho người mới bắt đầu.
+
 
 #### 🧭 Giao diện bố trí hợp lý
 
