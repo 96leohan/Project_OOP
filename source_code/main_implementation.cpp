@@ -49,17 +49,49 @@ Kiểm tra chiếu và chiếu hết
 Các file này tạo nên một nền tảng vững chắc cho trò chơi cờ vua của bạn, tuân theo chuẩn lập trình C++ với phân tách rõ ràng giữa các chức năng.
 Bước tiếp theo là triển khai các lớp quân cờ cụ thể để biến trò chơi thành một sản phẩm hoàn chỉnh.
 
+---------------------------------------------
+Bổ sung ngày 20/4/2025
+-Hoàn thành việc triển khai các lớp quân cờ cụ thể và các chức năng bổ sung
+
++Các lớp quân cờ cụ thể:
+Pawn (Tốt): Triển khai nước đi tiêu chuẩn, di chuyển 2 ô lần đầu, bắt quân theo đường chéo
+Knight (Mã): Triển khai nước đi hình chữ L
+Bishop (Tượng): Triển khai nước đi theo đường chéo
+Rook (Xe): Triển khai nước đi theo hàng và cột
+Queen (Hậu): Triển khai nước đi theo hàng, cột và đường chéo
+King (Vua): Triển khai nước đi 1 ô theo mọi hướng
+
++Các chức năng đặc biệt:
+Phong cấp quân tốt khi đến hàng cuối cùng
+Nhập thành (cả bên Vua và bên Hậu)
+Kiểm tra chiếu và chiếu hết
+Kiểm tra nước đi hợp lệ cho từng loại quân
+
++Cập nhật ChessBoard:
+Khởi tạo bàn cờ với vị trí ban đầu của tất cả quân cờ
+Xử lý logic di chuyển quân cờ với kiểm tra hợp lệ
+Triển khai kiểm tra chiếu và chiếu hết
+
++Thêm các cải tiến về giao diện người dùng như hiển thị trợ giúp, xử lý đầu vào, và các lệnh bổ sung.
+
+
 */
 
 #include <iostream>
 #include <string>
+#include <cctype>
+#include <algorithm>
 #include "chess_board.h"
 #include "position.h"
 
 // Parse user move command (e.g., "e2 e4")
 bool parseMove(const std::string &input, Position &from, Position &to)
 {
+    // Remove leading/trailing whitespace and convert to lowercase
     std::string trimmed = input;
+    trimmed.erase(0, trimmed.find_first_not_of(" \t\n\r\f\v"));
+    trimmed.erase(trimmed.find_last_not_of(" \t\n\r\f\v") + 1);
+    std::transform(trimmed.begin(), trimmed.end(), trimmed.begin(), ::tolower);
 
     // Simple parsing - expects format like "e2 e4"
     size_t spacePos = trimmed.find(' ');
@@ -83,11 +115,21 @@ bool parseMove(const std::string &input, Position &from, Position &to)
     }
 }
 
+void displayHelp()
+{
+    std::cout << "\n=== Chess Commands ===\n";
+    std::cout << "- Enter moves in format 'e2 e4' (from to)\n";
+    std::cout << "- Type 'help' to display this help\n";
+    std::cout << "- Type 'reset' to restart the game\n";
+    std::cout << "- Type 'quit' or 'exit' to exit the game\n";
+    std::cout << "- Type 'board' to display the current board\n";
+    std::cout << "=====================\n\n";
+}
+
 int main()
 {
     std::cout << "=== C++ Chess Game ===\n";
-    std::cout << "Enter moves in format 'e2 e4' (from to)\n";
-    std::cout << "Enter 'quit' to exit\n\n";
+    displayHelp();
 
     ChessBoard board;
     board.display();
@@ -95,31 +137,59 @@ int main()
     std::string input;
     while (true)
     {
-        Color currentPlayer = board.getCurrentTurn();
-        std::cout << "\n"
-                  << (currentPlayer == Color::WHITE ? "White" : "Black") << " to move: ";
-        std::getline(std::cin, input);
-
-        if (input == "quit" || input == "exit")
+        if (board.isGameOver())
         {
-            break;
-        }
-
-        Position from(0, 0), to(0, 0);
-        if (parseMove(input, from, to))
-        {
-            if (board.movePiece(from, to))
-            {
-                board.display();
-            }
-            else
-            {
-                std::cout << "Invalid move! Try again.\n";
-            }
+            std::cout << "\nGame over! Type 'reset' to start a new game or 'quit' to exit.\n";
         }
         else
         {
-            std::cout << "Invalid input format! Use format 'e2 e4'.\n";
+            Color currentPlayer = board.getCurrentTurn();
+            std::cout << "\n"
+                      << (currentPlayer == Color::WHITE ? "White" : "Black") << " to move: ";
+        }
+
+        std::getline(std::cin, input);
+
+        // Convert input to lowercase for command comparison
+        std::string lowerInput = input;
+        std::transform(lowerInput.begin(), lowerInput.end(), lowerInput.begin(), ::tolower);
+
+        if (lowerInput == "quit" || lowerInput == "exit")
+        {
+            break;
+        }
+        else if (lowerInput == "help")
+        {
+            displayHelp();
+        }
+        else if (lowerInput == "reset")
+        {
+            std::cout << "Resetting the game...\n";
+            board.initializeBoard();
+            board.display();
+        }
+        else if (lowerInput == "board")
+        {
+            board.display();
+        }
+        else if (!board.isGameOver())
+        {
+            Position from(0, 0), to(0, 0);
+            if (parseMove(input, from, to))
+            {
+                if (board.movePiece(from, to))
+                {
+                    board.display();
+                }
+                else
+                {
+                    std::cout << "Invalid move! Try again.\n";
+                }
+            }
+            else
+            {
+                std::cout << "Invalid input format! Use format 'e2 e4'.\n";
+            }
         }
     }
 
