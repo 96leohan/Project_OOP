@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "windows-gcc-x64",
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "${default}",
+            "cppStandard": "${default}",
+            "compilerPath": "gcc",
+            "intelliSenseMode": "windows-gcc-x64",
+            "includePath": [
+                "E:\\AppsInstalled\\Visual Studio\\MAIN\\VC\\Tools\\MSVC\\14.29.30133\\include",
+                "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt",
+                "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um",
+                "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared",
+                "F:\\TAILIEUANKHANG\\NamThu5HocKi2\\PPLTHDT\\DoAn1\\Project_OOP\\source_code"
+            ]
+        }
+    ],
+    "version": 4
+}

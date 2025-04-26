@@ -73,6 +73,12 @@ Xử lý logic di chuyển quân cờ với kiểm tra hợp lệ
 Triển khai kiểm tra chiếu và chiếu hết
 
 +Thêm các cải tiến về giao diện người dùng như hiển thị trợ giúp, xử lý đầu vào, và các lệnh bổ sung.
+.Cải thiện việc triển khai ChessBoard với thiết lập quân cờ hoàn chỉnh và logic trò chơi
+. Khởi tạo bàn cờ với tất cả các quân cờ ở vị trí bắt đầu của chúng.
+. Triển khai quản lý trạng thái trò chơi, bao gồm chuyển lượt và điều kiện kết thúc trò chơi.
+.Thêm logic cho các nước đi đặc biệt như nhập thành và phong cấp quân tốt.
+. Giới thiệu các phương pháp để kiểm tra điều kiện chiếu và chiếu hết.
+. Cập nhật vòng lặp trò chơi chính để xử lý lệnh của người dùng và hiển thị trạng thái trò chơi hiệu quả.
 
 
 */
