@@ -26,10 +26,14 @@ private:
 public:
     ChessBoard();            // constructor của lớp ChessBoard
     ~ChessBoard() = default; // Sử dụng hàm hủy mặc định (không cần quản lý bộ nhớ thủ công do dùng unique_ptr)
+    // Copy constructor
+    ChessBoard(const ChessBoard& other);
+    // Assignment operator
+    ChessBoard& operator=(const ChessBoard& other);
 
     void initializeBoard(); // Phương thức để thiết lập bàn cờ với các quân cờ ở vị trí bắt đầu
     void display() const;   // Phương thức để hiển thị trạng thái hiện tại của bàn cờ ra màn hình console
-
+    
     ChessPiece *getPiece(const Position &pos) const;          // Phương thức để lấy con trỏ (thô) đến quân cờ tại một vị trí nhất định
     bool movePiece(const Position &from, const Position &to); // Phương thức để thực hiện một nước đi từ vị trí 'from' đến vị trí 'to'
     Color getCurrentTurn() const;                             // Phương thức để lấy màu của người chơi hiện tại

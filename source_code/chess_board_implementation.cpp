@@ -65,6 +65,116 @@ void ChessBoard::initializeBoard()
     std::cout << "Chess board initialized with all pieces in starting positions." << std::endl; // Thông báo khi bàn cờ được khởi tạo
 }
 
+ChessBoard::ChessBoard(const ChessBoard &other)
+{
+    // Sao chép các thuộc tính cơ bản
+    _currentTurn = other._currentTurn;
+    _gameOver = other._gameOver;
+
+    // Khởi tạo bàn cờ trống
+    _board.resize(8, std::vector<std::unique_ptr<ChessPiece>>(8, nullptr));
+
+    // Sao chép từng quân cờ từ bàn cờ gốc
+    for (int row = 0; row < 8; row++)
+    {
+        for (int col = 0; col < 8; col++)
+        {
+            Position pos(row, col);
+            ChessPiece *piece = other.getPiece(pos);
+            if (piece)
+            {
+                // Tạo bản sao của quân cờ dựa trên loại
+                switch (piece->getType())
+                {
+                case PieceType::PAWN:
+                    _board[row][col] = std::make_unique<Pawn>(piece->getColor(), pos);
+                    break;
+                case PieceType::ROOK:
+                    _board[row][col] = std::make_unique<Rook>(piece->getColor(), pos);
+                    static_cast<Rook *>(_board[row][col].get())->setHasMoved(static_cast<Rook *>(piece)->hasMoved());
+                    break;
+                case PieceType::KNIGHT:
+                    _board[row][col] = std::make_unique<Knight>(piece->getColor(), pos);
+                    break;
+                case PieceType::BISHOP:
+                    _board[row][col] = std::make_unique<Bishop>(piece->getColor(), pos);
+                    break;
+                case PieceType::QUEEN:
+                    _board[row][col] = std::make_unique<Queen>(piece->getColor(), pos);
+                    break;
+                case PieceType::KING:
+                    _board[row][col] = std::make_unique<King>(piece->getColor(), pos);
+                    static_cast<King *>(_board[row][col].get())->_hasMoved =
+                        static_cast<King *>(piece)->_hasMoved;
+                    break;
+                }
+            }
+        }
+    }
+}
+
+ChessBoard &ChessBoard::operator=(const ChessBoard &other)
+{
+    if (this != &other)
+    {
+        // Sao chép các thuộc tính cơ bản
+        _currentTurn = other._currentTurn;
+        _gameOver = other._gameOver;
+
+        // Xóa bàn cờ hiện tại
+        for (auto &row : _board)
+        {
+            for (auto &piece : row)
+            {
+                piece.reset();
+            }
+        }
+
+        // Sao chép từng quân cờ từ bàn cờ gốc
+        for (int row = 0; row < 8; row++)
+        {
+            for (int col = 0; col < 8; col++)
+            {
+                Position pos(row, col);
+                ChessPiece *piece = other.getPiece(pos);
+                if (piece)
+                {
+                    // Tạo bản sao của quân cờ dựa trên loại
+                    switch (piece->getType())
+                    {
+                    case PieceType::PAWN:
+                        _board[row][col] = std::make_unique<Pawn>(piece->getColor(), pos);
+                        break;
+                    case PieceType::ROOK:
+                        _board[row][col] = std::make_unique<Rook>(piece->getColor(), pos);
+                        static_cast<Rook *>(_board[row][col].get())->setHasMoved(static_cast<Rook *>(piece)->hasMoved());
+                        break;
+                    case PieceType::KNIGHT:
+                        _board[row][col] = std::make_unique<Knight>(piece->getColor(), pos);
+                        break;
+                    case PieceType::BISHOP:
+                        _board[row][col] = std::make_unique<Bishop>(piece->getColor(), pos);
+                        break;
+                    case PieceType::QUEEN:
+                        _board[row][col] = std::make_unique<Queen>(piece->getColor(), pos);
+                        break;
+                    case PieceType::KING:
+                        _board[row][col] = std::make_unique<King>(piece->getColor(), pos);
+                        static_cast<King *>(_board[row][col].get())->_hasMoved =
+                            static_cast<King *>(piece)->_hasMoved;
+                        break;
+                    }
+                }
+                else
+                {
+                    _board[row][col] = nullptr;
+                }
+            }
+        }
+    }
+    return *this;
+}
+
 // Định nghĩa hàm display để hiển thị bàn cờ ra màn hình console
 void ChessBoard::display() const
 {
