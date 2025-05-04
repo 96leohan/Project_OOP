@@ -16,7 +16,8 @@
                 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt",
                 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um",
                 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared",
-                "F:\\TAILIEUANKHANG\\NamThu5HocKi2\\PPLTHDT\\DoAn1\\Project_OOP\\source_code"
+                "F:\\TAILIEUANKHANG\\NamThu5HocKi2\\PPLTHDT\\DoAn1\\Project_OOP\\source_code",
+                "D:\\SFML library\\SFML-2.6.2-windows-gcc-13.1.0-mingw-64-bit\\SFML-2.6.2\\include"
             ]
         }
     ],
