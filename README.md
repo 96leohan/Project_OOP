@@ -1,4 +1,5 @@
 # -Project_OOP
+
 # Mã nguồn lựa chọn
 
 ## Game cờ vua
@@ -16,7 +17,24 @@
 
 ### 2. Các công việc các thành viên đã thực hiện
 
-_(Nội dung cần bổ sung cụ thể)_
+**An Khang:**
+
+- Cấu trúc dự án git, viết file markdown
+- Cài đặt lại tính năng cơ bản của ứng dụng theo phương pháp hướng đối tượng với coding convention
+  - Cài đặt logic cơ bản các quân cờ, bàn cờ
+  - Cài đặt các logic bổ sung:
+    - Nhập thành (Castling)
+    - Bắt quân qua đường (En Passant)
+    - Phong cấp (Pawn Promotion)
+    - Chiếu và Chiếu hết (Check & Checkmate)
+    - Hòa cờ (Stalemate)
+  - Cài đặt chức năng hàm main, vòng lặp chính của chương trình
+- Triển khai chức năng chơi với máy (AI Opponent)
+- Ghi chép biên bản họp nhóm
+
+**Lê Hân:**
+
+- Cấu trúc dự án git
 
 ---
 
@@ -32,14 +50,16 @@ _(Nội dung cần bổ sung cụ thể)_
 
 ---
 
-### 5. Mô tả cụ thể cho các yêu cầu
+### 5. Cách thức đánh giá
 
-#### 🧑‍🤝‍🧑 Teamwork
+Mô tả cụ thể cho các yêu cầu
+
+#### 🧑‍🤝‍🧑 Teamwork: thực hiện tốt
 
 - Phân công và theo dõi tiến độ công việc
 - Ghi chép biên bản họp nhóm
 
-#### 🎨 UI/UX
+#### 🎨 UI/UX: chưa hoàn thành
 
 - Giao diện chương trình thân thiện, rõ ràng
 - Cung cấp trải nghiệm người dùng mượt mà
@@ -48,7 +68,7 @@ _(Nội dung cần bổ sung cụ thể)_
 
 #### 🔧 Các chức năng thêm và cải tiến
 
-##### ✅ Cải thiện gameplay
+##### ✅ Cải thiện gameplay: đã hoàn thiện
 
 - **Nhập thành (Castling)**: Kiểm tra đầy đủ các điều kiện nhập thành:
   - Không có quân cản
@@ -59,29 +79,28 @@ _(Nội dung cần bổ sung cụ thể)_
 - **Chiếu và Chiếu hết (Check & Checkmate)**
 - **Hòa cờ (Stalemate)**
 
-##### 📜 Ghi lại lịch sử ván cờ (Move History)
+##### 📜 Ghi lại lịch sử ván cờ (Move History): chưa hoàn thành
 
 - Lưu danh sách các nước đi đã thực hiện
 
-##### ⏱️ Hẹn giờ (Timers)
+##### ⏱️ Hẹn giờ (Timers): chưa hoàn thành
 
 - Đồng hồ đếm ngược với các chế độ: blitz, rapid, classical
 
-##### 🤖 Chơi với máy (AI Opponent)
+##### 🤖 Chơi với máy (AI Opponent): đã hoàn thiện
 
 - Đối thủ AI có nhiều cấp độ khó
 
-##### 🧩 Cải thiện giao diện người dùng
+##### 🧩 Cải thiện giao diện người dùng: chưa hoàn thành
 
 - Hiển thị nước đi hợp lệ
 - Thông báo và phản hồi các sự kiện: nước đi sai, chiếu, chiếu hết...
 - Thêm chức năng đầu hàng, restart trận đấu
 - Thêm màn hình Home
-- Thêm menu setting bao gồm: chỉnh độ khó, chọn chế độ, credit, nút thoát ứng dụng (exit), 
+- Thêm menu setting bao gồm: chỉnh độ khó, chọn chế độ, credit, nút thoát ứng dụng (exit),
 - Ngôn ngữ: Lựa chọn ngôn ngữ hiển thị trong trò chơi, tiếng Anh và Tiếng Việt
 - Thống kê: Số ván đã chơi, số ván thắng, thua, hòa.
 - Hướng dẫn/Luật chơi (Tutorial/Rules - tùy chọn):cung cấp thông tin về luật chơi cờ vua cho người mới bắt đầu.
-
 
 #### 🧭 Giao diện bố trí hợp lý
 
@@ -110,7 +129,7 @@ _(Nội dung cần bổ sung cụ thể)_
 
 ###### 3. Cấu trúc chương trình
 
-- Dùng include guard 
+- Dùng include guard
 - Tách `.h` (khai báo) và `.cpp` (định nghĩa)
 - Dùng forward declaration nếu có thể
 
