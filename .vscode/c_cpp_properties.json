@@ -7,17 +7,19 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "cStandard": "${default}",
-            "cppStandard": "${default}",
-            "compilerPath": "gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "compilerPath": "C:/MinGW/bin/g++.exe",
             "intelliSenseMode": "windows-gcc-x64",
             "includePath": [
-                "E:\\AppsInstalled\\Visual Studio\\MAIN\\VC\\Tools\\MSVC\\14.29.30133\\include",
-                "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt",
-                "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um",
-                "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared",
-                "F:\\TAILIEUANKHANG\\NamThu5HocKi2\\PPLTHDT\\DoAn1\\Project_OOP\\source_code",
-                "D:\\SFML library\\SFML-2.6.2-windows-gcc-13.1.0-mingw-64-bit\\SFML-2.6.2\\include"
+                "${workspaceFolder}/**",
+                "C:/MinGW/lib/gcc/mingw32/*/include/c++",
+                "C:/MinGW/lib/gcc/mingw32/*/include/c++/mingw32",
+                "C:/MinGW/lib/gcc/mingw32/*/include/c++/backward",
+                "C:/MinGW/include",
+                "C:/MinGW/lib/gcc/mingw32/*/include",
+                "F:/TAILIEUANKHANG/NamThu5HocKi2/PPLTHDT/DoAn1/Project_OOP/source_code",
+                "D:/SFML library/SFML-2.6.2-windows-gcc-13.1.0-mingw-64-bit/SFML-2.6.2/include"
             ]
         }
     ],

@@ -1,89 +1,3 @@
-/*!SECTION
-1. position.h và position.cpp
-Các file này định nghĩa lớp Position, dùng để xử lý tọa độ trên bàn cờ:
-Đại diện cho một vị trí trên bàn cờ bằng chỉ số hàng và cột (0–7)
-Cung cấp chức năng chuyển đổi giữa ký hiệu đại số (ví dụ: "e4") và tọa độ nội bộ
-Bao gồm kiểm tra hợp lệ để đảm bảo vị trí nằm trong phạm vi bàn cờ
-Các phương thức chính gồm: fromAlgebraic(), toAlgebraic(), và isValid()
-
-2. chess_piece.h và chess_piece.cpp
-Các file này định nghĩa lớp cơ sở trừu tượng cho các quân cờ:
-Định nghĩa enum class PieceType (PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING)
-Định nghĩa enum class Color (WHITE, BLACK)
-Chứa lớp trừu tượng ChessPiece với:
-Thuộc tính cơ bản của quân cờ (loại, màu, vị trí)
-Các phương thức trừu tượng để kiểm tra nước đi (sẽ được cài trong các lớp con)
-Các hàm tiện ích để lấy thông tin và ký hiệu của quân cờ để hiển thị
-
-3. chess_board.h và chess_board.cpp
-Các file này triển khai bàn cờ và cơ chế chơi game:
-Quản lý lưới 8x8 quân cờ bằng smart pointers
-Theo dõi lượt chơi của người chơi hiện tại
-Cung cấp các phương thức:
-Khởi tạo bàn cờ (hiện tại là khung placeholder)
-Hiển thị trạng thái bàn cờ dưới dạng văn bản
-Lấy quân cờ tại một vị trí cụ thể
-Di chuyển quân cờ với kiểm tra hợp lệ
-Kiểm tra lượt chơi hiện tại
-
-4. main.cpp
-File này chứa điểm khởi đầu chương trình và giao diện người dùng:
-Hiển thị lời chào và hướng dẫn chơi
-Triển khai vòng lặp chính của trò chơi
-Phân tích cú pháp đầu vào từ người chơi (nhập nước đi)
-Xử lý lệnh và hiển thị bàn cờ sau mỗi lượt
-Bao gồm hàm parseMove() để chuyển đổi đầu vào thành đối tượng Position
-
-*** Trạng thái hiện tại của chương trình
-Cấu trúc và kiến trúc code đã sẵn sàng
-Vòng lặp trò chơi chính đã hoạt động, cho phép nhập lệnh và hiển thị bàn cờ
-Cơ chế di chuyển quân cờ đã được định nghĩa nhưng chưa hoàn thiện
-
-*** Những phần còn thiếu:
-Các lớp quân cờ cụ thể (Tốt, Mã, Tượng, Xe, Hậu, Vua) kế thừa từ ChessPiece
-Cài đặt thực tế cho hàm initializeBoard() để sắp xếp quân ở vị trí ban đầu
-Logic kiểm tra hợp lệ cho từng loại quân
-Quy tắc đặc biệt như nhập thành, bắt tốt qua đường, phong cấp
-Kiểm tra chiếu và chiếu hết
-
-Các file này tạo nên một nền tảng vững chắc cho trò chơi cờ vua của bạn, tuân theo chuẩn lập trình C++ với phân tách rõ ràng giữa các chức năng.
-Bước tiếp theo là triển khai các lớp quân cờ cụ thể để biến trò chơi thành một sản phẩm hoàn chỉnh.
-
----------------------------------------------
-Bổ sung ngày 20/4/2025
--Hoàn thành việc triển khai các lớp quân cờ cụ thể và các chức năng bổ sung
-
-+Các lớp quân cờ cụ thể:
-Pawn (Tốt): Triển khai nước đi tiêu chuẩn, di chuyển 2 ô lần đầu, bắt quân theo đường chéo
-Knight (Mã): Triển khai nước đi hình chữ L
-Bishop (Tượng): Triển khai nước đi theo đường chéo
-Rook (Xe): Triển khai nước đi theo hàng và cột
-Queen (Hậu): Triển khai nước đi theo hàng, cột và đường chéo
-King (Vua): Triển khai nước đi 1 ô theo mọi hướng
-
-+Các chức năng đặc biệt:
-Phong cấp quân tốt khi đến hàng cuối cùng
-Nhập thành (cả bên Vua và bên Hậu)
-Kiểm tra chiếu và chiếu hết
-Kiểm tra nước đi hợp lệ cho từng loại quân
-
-+Cập nhật ChessBoard:
-Khởi tạo bàn cờ với vị trí ban đầu của tất cả quân cờ
-Xử lý logic di chuyển quân cờ với kiểm tra hợp lệ
-Triển khai kiểm tra chiếu và chiếu hết
-
-+Thêm các cải tiến về giao diện người dùng như hiển thị trợ giúp, xử lý đầu vào, và các lệnh bổ sung.
-.Cải thiện việc triển khai ChessBoard với thiết lập quân cờ hoàn chỉnh và logic trò chơi
-. Khởi tạo bàn cờ với tất cả các quân cờ ở vị trí bắt đầu của chúng.
-. Triển khai quản lý trạng thái trò chơi, bao gồm chuyển lượt và điều kiện kết thúc trò chơi.
-.Thêm logic cho các nước đi đặc biệt như nhập thành và phong cấp quân tốt.
-. Giới thiệu các phương pháp để kiểm tra điều kiện chiếu và chiếu hết.
-. Cập nhật vòng lặp trò chơi chính để xử lý lệnh của người dùng và hiển thị trạng thái trò chơi hiệu quả.
-
--Đã thêm tính năng đối thủ máy
-
-*/
-
 #include <iostream>
 #include <string>
 #include <cctype>
@@ -134,6 +48,9 @@ void displayHelp()
     std::cout << "- Type 'board' to display the current board\n";
     std::cout << "- Type 'mode' to change game mode (human vs human, human vs AI, AI vs human)\n";
     std::cout << "- Type 'difficulty' to change AI difficulty (easy, medium, hard)\n";
+    std::cout << "- Type 'history' to display move history\n";
+    std::cout << "- Type 'detail' to display detailed move history\n";
+    std::cout << "- Type 'save [filename]' to save move history to file\n";
     std::cout << "=====================\n\n";
 }
 
@@ -248,6 +165,39 @@ int main()
         {
             board.display();
         }
+        else if (lowerInput == "history")
+        {
+            // Hiển thị lịch sử nước đi ngắn gọn
+            board.displayMoveHistory(false);
+        }
+        else if (lowerInput == "detail")
+        {
+            // Hiển thị lịch sử nước đi chi tiết
+            board.displayMoveHistory(true);
+        }
+        else if (lowerInput.substr(0, 4) == "save")
+        {
+            // Lưu lịch sử nước đi vào file
+            std::string filename;
+            if (lowerInput.length() > 5)
+            {
+                filename = input.substr(5); // Lấy tên file (giữ nguyên case)
+            }
+            else
+            {
+                // Sử dụng tên file mặc định
+                filename = "chess_history.txt";
+            }
+
+            if (board.saveMoveHistory(filename))
+            {
+                std::cout << "Move history saved to file: " << filename << "\n";
+            }
+            else
+            {
+                std::cout << "Failed to save move history to file: " << filename << "\n";
+            }
+        }
         else if (lowerInput == "mode")
         {
             displayModeOptions();
@@ -316,6 +266,14 @@ int main()
                 if (board.movePiece(from, to))
                 {
                     board.display();
+
+                    // Kiểm tra nếu có nước đi cuối cùng, hiển thị nó
+                    const MoveHistory &history = board.getMoveHistory();
+                    const Move *lastMove = history.getLastMove();
+                    if (lastMove)
+                    {
+                        std::cout << "Last move: " << lastMove->toString() << "\n";
+                    }
                 }
                 else
                 {
