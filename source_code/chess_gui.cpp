@@ -1,5 +1,5 @@
-
-// ches GUI
+// nhớ kiểm tra các đường link có đúng không
+//  ches GUI
 #include "ChessGUI.h"
 #include "chess_piece.h"
 #include <iostream>
@@ -35,35 +35,33 @@ ChessGUI::~ChessGUI()
 bool ChessGUI::loadResources()
 {
     // Tải texture cho bàn cờ
-    if (!boardTexture.loadFromFile("resources/chessboard.png"))
+    if (!boardTexture.loadFromFile("resources/chessboard.png")) // Assuming this is correct
     {
         std::cerr << "Failed to load chessboard texture!" << std::endl;
         return false;
     }
-    boardSprite.setTexture(boardTexture);
-    boardSprite.setPosition(boardOffsetX, boardOffsetY);
-    boardSprite.setScale(
-        static_cast<float>(boardSize) / boardTexture.getSize().x,
-        static_cast<float>(boardSize) / boardTexture.getSize().y);
+    // ...
 
     // Tải texture cho các quân cờ
-    std::vector<std::string> pieceTypes = {
-        "w_king", "w_queen", "w_bishop", "w_knight", "w_rook", "w_pawn",
-        "b_king", "b_queen", "b_bishop", "b_knight", "b_rook", "b_pawn"};
+    std::vector<std::string> pieceFilenames = {// More descriptive names
+                                               "w_king", "w_queen", "w_bishop", "w_knight", "w_rook", "w_pawn",
+                                               "b_king", "b_queen", "b_bishop", "b_knight", "b_rook", "b_pawn"};
 
-    for (const auto &type : pieceTypes)
+    for (const auto &filename : pieceFilenames) // Use the filename directly
     {
         sf::Texture texture;
-        if (!texture.loadFromFile("resources/" + type + ".png"))
+        // CORRECTED PATH:
+        if (!texture.loadFromFile("resources/pieces/" + filename + ".png"))
         {
-            std::cerr << "Failed to load texture for " << type << "!" << std::endl;
+            std::cerr << "Failed to load texture for " << filename << "!" << std::endl;
             return false;
         }
-        pieceTextures[type] = texture;
+        pieceTextures[filename] = texture; // Store by filename (which is your key)
     }
 
     // Tải font chữ
-    if (!font.loadFromFile("resources/arial.ttf"))
+    // CORRECTED PATH:
+    if (!font.loadFromFile("resources/fonts/arial.ttf"))
     {
         std::cerr << "Failed to load font!" << std::endl;
         return false;
@@ -166,7 +164,7 @@ void ChessGUI::draw(const ChessBoard &board)
     std::string status;
     if (board.isCheckmate())
     {
-        status = "Chiếu bí! " + std::string(board.getCurrentPlayer() == ChessPiece::WHITE ? "Đen" : "Trắng") + " thắng!";
+        status = "Chiếu bí! " + std::string(board.getCurrentTurn() == ChessPiece::WHITE ? "Đen" : "Trắng") + " thắng!";
     }
     else if (board.isStalemate())
     {
@@ -174,11 +172,11 @@ void ChessGUI::draw(const ChessBoard &board)
     }
     else if (board.isCheck())
     {
-        status = "Chiếu tướng! " + std::string(board.getCurrentPlayer() == ChessPiece::WHITE ? "Trắng" : "Đen") + " cần bảo vệ vua.";
+        status = "Chiếu tướng! " + std::string(board.getCurrentTurn() == ChessPiece::WHITE ? "Trắng" : "Đen") + " cần bảo vệ vua.";
     }
     else
     {
-        status = "Lượt của " + std::string(board.getCurrentPlayer() == ChessPiece::WHITE ? "Trắng" : "Đen");
+        status = "Lượt của " + std::string(board.getCurrentTurn() == ChessPiece::WHITE ? "Trắng" : "Đen");
     }
 
     drawStatus(status);
@@ -292,40 +290,37 @@ sf::Vector2f ChessGUI::getSquarePosition(Position pos)
 
 std::string ChessGUI::getPieceKey(ChessPiece *piece)
 {
-    std::string prefix = (piece->getColor() == ChessPiece::WHITE) ? "w_" : "b_";
-    std::string type;
+    if (!piece)
+        return "unknown";
+    std::string prefix = (piece->getColor() == Color::WHITE) ? "w_" : "b_";
+    std::string typeStr;
+    PieceType pType = piece->getType(); // Assuming piece->getType() exists
 
-    // Xác định loại quân cờ
-    if (dynamic_cast<King *>(piece))
+    switch (pType)
     {
-        type = "king";
+    case PieceType::KING:
+        typeStr = "king";
+        break;
+    case PieceType::QUEEN:
+        typeStr = "queen";
+        break;
+    case PieceType::BISHOP:
+        typeStr = "bishop";
+        break;
+    case PieceType::KNIGHT:
+        typeStr = "knight";
+        break;
+    case PieceType::ROOK:
+        typeStr = "rook";
+        break;
+    case PieceType::PAWN:
+        typeStr = "pawn";
+        break;
+    default:
+        typeStr = "unknown";
+        break;
     }
-    else if (dynamic_cast<Queen *>(piece))
-    {
-        type = "queen";
-    }
-    else if (dynamic_cast<Bishop *>(piece))
-    {
-        type = "bishop";
-    }
-    else if (dynamic_cast<Knight *>(piece))
-    {
-        type = "knight";
-    }
-    else if (dynamic_cast<Rook *>(piece))
-    {
-        type = "rook";
-    }
-    else if (dynamic_cast<Pawn *>(piece))
-    {
-        type = "pawn";
-    }
-    else
-    {
-        type = "unknown";
-    }
-
-    return prefix + type;
+    return prefix + typeStr;
 }
 
 void ChessGUI::setLastMove(Position from, Position to)
@@ -341,24 +336,28 @@ void ChessGUI::clearSelection()
     validMoves.clear();
 }
 
-void ChessGUI::updateValidMoves(const ChessBoard &board, Position pos)
+vvoid ChessGUI::updateValidMoves(const ChessBoard &board, Position piecePos) // Renamed pos to piecePos for clarity
 {
     validMoves.clear();
-    ChessPiece *piece = board.getPiece(pos);
+    ChessPiece *piece = board.getPiece(piecePos);
 
-    if (piece != nullptr)
+    if (piece != nullptr && piece->getColor() == board.getCurrentTurn()) // Check if it's the current player's piece
     {
         // Lấy tất cả các nước đi hợp lệ của quân cờ
-        for (int y = 0; y < 8; y++)
-        {
-            for (int x = 0; x < 8; x++)
-            {
-                Position target(x, y);
-                if (board.isValidMove(pos, target))
-                {
-                    validMoves.push_back(target);
-                }
-            }
-        }
+        // Assuming ChessPiece has a getPossibleMoves method
+        validMoves = piece->getPossibleMoves(board);
+
+        // If getPossibleMoves doesn't filter for self-check, you might need an extra step
+        // to create a temporary board for each move and see if it results in a check.
+        // However, your ChessBoard::movePiece already handles this.
+        // So, the moves from getPossibleMoves should be fine if they are "pseudo-legal".
+        // The final check in ChessBoard::movePiece will confirm legality.
+
+        /*!SECTION
+        Important: For this to work, your ChessPiece base class (and derived classes) must have a:
+        virtual std::vector<Position> getPossibleMoves(const ChessBoard& board) const;
+        This method should return all pseudo-legal moves (moves that are valid by the piece's movement rules, without considering if they leave the king in check).
+        Your ChessBoard::movePiece will then do the final validation.
+        */
     }
 }

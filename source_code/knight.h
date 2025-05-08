@@ -1,9 +1,9 @@
-
 // knight.h
 #ifndef KNIGHT_H
 #define KNIGHT_H
 
 #include "chess_piece.h"
+#include <vector>
 
 class Knight : public ChessPiece
 {

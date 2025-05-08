@@ -1,4 +1,4 @@
-// Cập nhật file chess_board.h
+// chess_board.h
 #ifndef CHESS_BOARD_H
 #define CHESS_BOARD_H
 
@@ -23,8 +23,9 @@ private:
     MoveHistory _moveHistory; // Thêm đối tượng MoveHistory để lưu trữ lịch sử nước đi
 
     // Các phương thức hỗ trợ
-    bool isInCheck(Color color) const;
+    bool isGameOver() const;
     bool isCheckmate(Color color) const;
+    bool isStalemate(Color color) const;
 
 public:
     ChessBoard();

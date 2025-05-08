@@ -1,6 +1,7 @@
 // king.cpp
 #include "king.h"
 #include "chess_board.h"
+#include "rook.h" // Thêm include này
 #include <cmath>
 
 // Hàm tạo (constructor) của lớp King
@@ -42,7 +43,16 @@ std::vector<Position> King::getPossibleMoves(const ChessBoard &board) const
         }
     }
 
-    // TODO: Thêm các nước đi nhập thành (castling)
+    // Thêm các nước đi nhập thành (castling)
+    int row = (_color == Color::WHITE) ? 7 : 0; // Xác định hàng của vua (hàng 7 cho trắng, hàng 0 cho đen)
+    if (canCastleKingside(board))
+    {
+        moves.push_back(Position(row, 6)); // Vị trí nhập thành cánh vua (g1 cho trắng, g8 cho đen)
+    }
+    if (canCastleQueenside(board))
+    {
+        moves.push_back(Position(row, 2)); // Vị trí nhập thành cánh hậu (c1 cho trắng, c8 cho đen)
+    }
 
     return moves; // Trả về danh sách các nước đi có thể
 }
@@ -56,16 +66,22 @@ bool King::isValidMove(const ChessBoard &board, const Position &dest) const
     // Nước đi thông thường của vua: một ô theo bất kỳ hướng nào
     bool isNormalMove = rowDiff <= 1 && colDiff <= 1 && (rowDiff != 0 || colDiff != 0);
 
-    // TODO: Thêm kiểm tra cho nhập thành
-
-    if (!isNormalMove)
+    // Nước đi nhập thành
+    bool isCastling = isCastlingMove(dest);
+    if (isCastling)
     {
-        return false; // Nếu không phải nước đi thông thường, và chưa kiểm tra nhập thành, thì không hợp lệ
+        bool isKingside = dest._col > _position._col;
+        return isKingside ? canCastleKingside(board) : canCastleQueenside(board);
     }
 
-    // Kiểm tra ô đích: trống hoặc có quân cờ của đối phương
-    ChessPiece *pieceAtDest = board.getPiece(dest);
-    return pieceAtDest == nullptr || pieceAtDest->getColor() != _color; // Hợp lệ nếu ô trống hoặc có quân khác màu
+    if (isNormalMove)
+    {
+        // Kiểm tra ô đích: trống hoặc có quân cờ của đối phương
+        ChessPiece *pieceAtDest = board.getPiece(dest);
+        return pieceAtDest == nullptr || pieceAtDest->getColor() != _color; // Hợp lệ nếu ô trống hoặc có quân khác màu
+    }
+
+    return false; // Nếu không phải nước đi thông thường và không phải nhập thành, thì không hợp lệ
 }
 
 // Phương thức để kiểm tra xem vua đã di chuyển hay chưa
@@ -90,7 +106,7 @@ bool King::canCastleKingside(const ChessBoard &board) const
 
     // Kiểm tra xem có xe ở vị trí đó, là xe, cùng màu và chưa di chuyển
     if (rook == nullptr || rook->getType() != PieceType::ROOK ||
-        rook->getColor() != _color || dynamic_cast<Rook *>(rook)->hasMoved())
+        rook->getColor() != _color || (dynamic_cast<Rook *>(rook) && dynamic_cast<Rook *>(rook)->hasMoved()))
     {
         return false;
     }
@@ -105,16 +121,12 @@ bool King::canCastleKingside(const ChessBoard &board) const
     }
 
     // Kiểm tra xem vua có bị chiếu, hoặc có đi qua ô bị chiếu không
-    for (int col = 4; col <= 6; ++col)
+    // Cần giả lập các vị trí vua sẽ đi qua và kiểm tra xem có bị tấn công không
+    if (board.isSquareAttacked(Position(row, 4), _color) || // Vị trí hiện tại của vua
+        board.isSquareAttacked(Position(row, 5), _color) || // Ô vua sẽ đi qua
+        board.isSquareAttacked(Position(row, 6), _color))   // Vị trí vua đến
     {
-        Position checkPos(row, col);
-        // Giả lập vị trí vua tại mỗi ô để kiểm tra xem có bị chiếu không
-        // (Cần cài đặt phương thức isSquareAttacked trong ChessBoard)
-
-        // Đoạn code giả (cần thay thế bằng logic thực tế):
-        // if (board.isSquareAttacked(checkPos, _color)) {
-        //     return false;
-        // }
+        return false;
     }
 
     return true; // Nếu tất cả các điều kiện trên đều đúng, có thể nhập thành cánh vua
@@ -135,7 +147,7 @@ bool King::canCastleQueenside(const ChessBoard &board) const
 
     // Kiểm tra xem có xe ở vị trí đó, là xe, cùng màu và chưa di chuyển
     if (rook == nullptr || rook->getType() != PieceType::ROOK ||
-        rook->getColor() != _color || dynamic_cast<Rook *>(rook)->hasMoved())
+        rook->getColor() != _color || (dynamic_cast<Rook *>(rook) && dynamic_cast<Rook *>(rook)->hasMoved()))
     {
         return false;
     }
@@ -150,10 +162,12 @@ bool King::canCastleQueenside(const ChessBoard &board) const
     }
 
     // Kiểm tra xem vua có bị chiếu, hoặc có đi qua ô bị chiếu không
-    for (int col = 2; col <= 4; ++col)
+    // Cần giả lập các vị trí vua sẽ đi qua và kiểm tra xem có bị tấn công không
+    if (board.isSquareAttacked(Position(row, 4), _color) || // Vị trí hiện tại của vua
+        board.isSquareAttacked(Position(row, 3), _color) || // Ô vua sẽ đi qua
+        board.isSquareAttacked(Position(row, 2), _color))   // Vị trí vua đến
     {
-        Position checkPos(row, col);
-        // Tương tự như canCastleKingside (cần cài đặt isSquareAttacked)
+        return false;
     }
 
     return true; // Nếu tất cả các điều kiện trên đều đúng, có thể nhập thành cánh hậu
@@ -167,71 +181,4 @@ bool King::isCastlingMove(const Position &dest) const
 
     // Vua di chuyển 2 ô theo chiều ngang và không thay đổi hàng
     return rowDiff == 0 && std::abs(colDiff) == 2;
-}
-
-// Cập nhật getPossibleMoves để bao gồm nước nhập thành
-std::vector<Position> King::getPossibleMoves(const ChessBoard &board) const
-{
-    std::vector<Position> moves;
-
-    // Eight adjacent squares (code đã có)
-    for (int rowOffset = -1; rowOffset <= 1; ++rowOffset)
-    {
-        for (int colOffset = -1; colOffset <= 1; ++colOffset)
-        {
-            if (rowOffset == 0 && colOffset == 0)
-            {
-                continue;
-            }
-            Position newPos(_position._row + rowOffset, _position._col + colOffset);
-            if (newPos.isValid())
-            {
-                ChessPiece *pieceAtDest = board.getPiece(newPos);
-                if (pieceAtDest == nullptr || pieceAtDest->getColor() != _color)
-                {
-                    moves.push_back(newPos);
-                }
-            }
-        }
-    }
-
-    // Add castling moves (thêm các nước đi nhập thành)
-    int row = (_color == Color::WHITE) ? 7 : 0; // Xác định hàng của vua (hàng 7 cho trắng, hàng 0 cho đen)
-    if (canCastleKingside(board))
-    {
-        moves.push_back(Position(row, 6)); // Vị trí nhập thành cánh vua (g1 cho trắng, g8 cho đen)
-    }
-    if (canCastleQueenside(board))
-    {
-        moves.push_back(Position(row, 2)); // Vị trí nhập thành cánh hậu (c1 cho trắng, c8 cho đen)
-    }
-
-    return moves;
-}
-
-// Cập nhật isValidMove để kiểm tra nước nhập thành
-bool King::isValidMove(const ChessBoard &board, const Position &dest) const
-{
-    int rowDiff = std::abs(dest._row - _position._row); // Độ lệch hàng
-    int colDiff = std::abs(dest._col - _position._col); // Độ lệch cột
-
-    // Normal king move: one square in any direction (nước đi thông thường của vua: một ô theo bất kỳ hướng nào)
-    bool isNormalMove = rowDiff <= 1 && colDiff <= 1 && (rowDiff != 0 || colDiff != 0);
-
-    // Castling move (nước đi nhập thành)
-    bool isCastling = isCastlingMove(dest);
-    if (isCastling)
-    {
-        bool isKingside = dest._col > _position._col;                             // Kiểm tra xem có phải nhập thành cánh vua không
-        return isKingside ? canCastleKingside(board) : canCastleQueenside(board); // Trả về kết quả kiểm tra khả năng nhập thành tương ứng
-    }
-
-    if (!isNormalMove && !isCastling)
-    {
-        return false; // Nếu không phải nước đi thông thường và không phải nhập thành, thì không hợp lệ
-    }
-
-    // Check destination: empty or opponent's piece (kiểm tra ô đích: trống hoặc có quân cờ của đối phương)
-    ChessPiece *pieceAtDest = board.getPiece(dest);
-    return pieceAtDest == nullptr || pieceAtDest->getColor() != _color; // Hợp lệ nếu ô trống hoặc có quân khác màu
 }

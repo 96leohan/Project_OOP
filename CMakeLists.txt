@@ -1,46 +1,53 @@
 cmake_minimum_required(VERSION 3.10)
-project(ChessGame VERSION 1.0)
+project(SFMLChessGame CXX)
 
-# Cài đặt chuẩn C++17
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Set SFML path
-set(SFML_DIR "D:/SFML library/SFML-2.6.2-windows-gcc-13.1.0-mingw-64-bit/SFML-2.6.2/lib/cmake/SFML")
-
-# Tìm thư viện SFML
+# Find SFML package
+# You might need to set SFML_DIR if SFML is not in a standard path
+# e.g., set(SFML_DIR "path/to/your/SFML_install/lib/cmake/SFML")
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
-# Danh sách tất cả các file nguồn
-set(SOURCE_FILES
-    source_code/position_implementation.cpp
-    source_code/chess_piece_implementation.cpp
-    source_code/chess_board_implementation.cpp
-    source_code/main_implementation.cpp
-    source_code/king.cpp
-    source_code/queen.cpp
-    source_code/pawn.cpp
-    source_code/bishop.cpp
-    source_code/rook.cpp
-    source_code/knight.cpp
-    source_code/AI_player.cpp
-    source_code/texture_manager.cpp
+# Add your executable
+add_executable(SFMLChessGame
+    source/main_gui.cpp # You'll create this new main for the GUI
+    source/chess_board_implementation.cpp
+    source/chess_piece_im.cpp # Consider renaming to chess_piece.cpp
+    source/position.cpp
+    source/King.cpp
+    source/Queen.cpp
+    source/Rook.cpp
+    source/Bishop.cpp
+    source/Knight.cpp
+    source/Pawn.cpp
+    source/ai_player.cpp # If you integrate AI into GUI
+    source/chess_gui.cpp
+    # Add other .cpp files if any (e.g., move.cpp, move_history.cpp)
 )
 
-# Tạo thư viện cho các file nguồn (tất cả trừ main)
-list(REMOVE_ITEM SOURCE_FILES source_code/main_implementation.cpp)
-add_library(chess_lib ${SOURCE_FILES})
+# Include directories
+target_include_directories(SFMLChessGame PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/source # To find your .h files
+    ${SFML_INCLUDE_DIR}
+)
 
-# Liên kết thư viện SFML với thư viện chess_lib
-target_link_libraries(chess_lib PUBLIC sfml-graphics sfml-window sfml-system)
+# Link SFML libraries
+target_link_libraries(SFMLChessGame PRIVATE
+    sfml-graphics
+    sfml-window
+    sfml-system
+)
 
-# Tạo tệp thực thi chính
-add_executable(ChessGame source_code/main_implementation.cpp)
-target_link_libraries(ChessGame PRIVATE chess_lib)
+# Optional: Copy resources to build directory for easier execution
+# This is a simple way, better for deployment might be install rules
+# Ensure your executable can find the 'resources' folder relative to its runtime location.
+# If you run from the build directory and 'resources' is in the source root:
+# One way is to copy them:
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources DESTINATION ${CMAKE_BINARY_DIR})
+# Or, ensure your code loads resources from a path relative to the executable,
+# or configure an install step. For development, copying or running from source dir (if paths are relative) is common.
 
-# Đặt thư mục include cho header
-target_include_directories(chess_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/source_code)
-target_include_directories(ChessGame PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/source_code)
-
-# Copy các tài nguyên (nếu có) vào thư mục build
-file(COPY ${CMAKE_SOURCE_DIR}/resource DESTINATION ${CMAKE_BINARY_DIR})
+# For Windows, if you want a windowed app without a console
+# add_executable(SFMLChessGame WIN32 ... )
+# But for debugging, keep the console for now.

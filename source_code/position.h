@@ -12,6 +12,14 @@ public:
     // Số cột (0-7, tương ứng từ cột a đến cột h).
     int _col;
 
+    int getX() const { return _col; } // Map col to X
+    int getY() const { return _row; } // Map row to Y
+
+    bool operator==(const Position &other) const
+    {
+        return _row == other._row && _col == other._col;
+    }
+
     // Constructor của lớp Position, nhận số hàng và số cột làm đối số.
     Position(int row, int col);
 

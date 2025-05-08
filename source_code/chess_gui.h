@@ -41,6 +41,8 @@ public:
     ChessGUI(sf::RenderWindow *window);
     ~ChessGUI();
 
+    sf::Font &getFont() { return font; } // lấy font
+
     // Khởi tạo tài nguyên
     bool loadResources();
 

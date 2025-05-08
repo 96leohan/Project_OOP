@@ -49,9 +49,9 @@ public:
     virtual bool isValidMove(const ChessBoard &board, const Position &dest) const = 0;
 
     // Các phương thức getter để lấy thông tin của quân cờ
-    PieceType getType() const;    // Lấy kiểu của quân cờ
-    Color getColor() const;       // Lấy màu của quân cờ
-    Position getPosition() const; // Lấy vị trí hiện tại của quân cờ
+    virtual PieceType getType() const = 0; // Pure virtual in base    // Lấy kiểu của quân cờ
+    Color getColor() const;                // Lấy màu của quân cờ
+    Position getPosition() const;          // Lấy vị trí hiện tại của quân cờ
 
     // Phương thức setter để đặt vị trí mới cho quân cờ
     void setPosition(const Position &pos);

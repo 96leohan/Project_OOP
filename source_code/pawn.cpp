@@ -1,12 +1,12 @@
-// pawn.cpp
 #include "pawn.h"
 #include "chess_board.h"
 #include <cmath>
 
 // Constructor cho lớp Pawn, nhận màu sắc và vị trí khởi tạo.
 // Khởi tạo thêm biến _hasMoved để theo dõi xem quân tốt đã di chuyển lần nào chưa (cho phép đi 2 ô ở nước đầu).
+// Khởi tạo _enPassantVulnerable để theo dõi trạng thái có thể bị bắt tốt qua đường.
 Pawn::Pawn(Color color, const Position &pos)
-    : ChessPiece(PieceType::PAWN, color, pos), _hasMoved(false) {}
+    : ChessPiece(PieceType::PAWN, color, pos), _hasMoved(false), _enPassantVulnerable(false) {}
 
 // Phương thức trả về một vector chứa tất cả các vị trí mà quân tốt có thể di chuyển đến từ vị trí hiện tại trên bàn cờ.
 std::vector<Position> Pawn::getPossibleMoves(const ChessBoard &board) const
@@ -49,6 +49,24 @@ std::vector<Position> Pawn::getPossibleMoves(const ChessBoard &board) const
             {
                 moves.push_back(capturePos);
             }
+            // Kiểm tra điều kiện bắt tốt qua đường
+            else if (pieceAtDest == nullptr)
+            {
+                // Kiểm tra xem có quân tốt đối phương ở cùng hàng và liền kề không
+                Position adjacentPos(_position._row, _position._col + colOffset);
+                if (adjacentPos.isValid())
+                {
+                    ChessPiece *adjacentPiece = board.getPiece(adjacentPos);
+                    // Kiểm tra xem đó có phải là quân tốt đối phương dễ bị tấn công qua đường không
+                    Pawn *enemyPawn = dynamic_cast<Pawn *>(adjacentPiece);
+                    if (enemyPawn != nullptr &&
+                        enemyPawn->getColor() != _color &&
+                        enemyPawn->isEnPassantVulnerable())
+                    {
+                        moves.push_back(capturePos);
+                    }
+                }
+            }
         }
     }
 
@@ -84,7 +102,27 @@ bool Pawn::isValidMove(const ChessBoard &board, const Position &dest) const
     {
         // Kiểm tra xem có quân cờ của đối phương ở ô đích không.
         ChessPiece *pieceAtDest = board.getPiece(dest);
-        return pieceAtDest != nullptr && pieceAtDest->getColor() != _color;
+        if (pieceAtDest != nullptr && pieceAtDest->getColor() != _color)
+        {
+            return true;
+        }
+
+        // Kiểm tra trường hợp bắt tốt qua đường
+        if (pieceAtDest == nullptr)
+        {
+            // Kiểm tra xem có quân tốt đối phương ở cùng hàng và liền kề không
+            Position adjacentPos(_position._row, _position._col + colDiff);
+            ChessPiece *adjacentPiece = board.getPiece(adjacentPos);
+
+            // Kiểm tra xem đó có phải là quân tốt đối phương dễ bị tấn công qua đường không
+            Pawn *enemyPawn = dynamic_cast<Pawn *>(adjacentPiece);
+            if (enemyPawn != nullptr &&
+                enemyPawn->getColor() != _color &&
+                enemyPawn->isEnPassantVulnerable())
+            {
+                return true;
+            }
+        }
     }
 
     return false; // Nước đi không hợp lệ.
