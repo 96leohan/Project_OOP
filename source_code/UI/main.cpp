@@ -1,4 +1,4 @@
-#include "ui/GameWindow.h"
+#include "UI/GameWindow.h"
 
 int main() {
     GameWindow game;
