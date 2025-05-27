@@ -1,5 +1,5 @@
 // ai_player.cpp
-#include "ai_player.h"
+#include "AI_player.h"
 #include <algorithm>
 #include <random>
 #include <iostream>
