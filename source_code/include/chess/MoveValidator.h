@@ -2,7 +2,7 @@
 #include "Position.h"
 #include "Board.h"
 
-class Board; // Forward declaration
+class Board;
 
 class MoveValidator {
 public:
