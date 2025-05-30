@@ -336,7 +336,7 @@ void ChessGUI::clearSelection()
     validMoves.clear();
 }
 
-vvoid ChessGUI::updateValidMoves(const ChessBoard &board, Position piecePos) // Renamed pos to piecePos for clarity
+void ChessGUI::updateValidMoves(const ChessBoard &board, Position piecePos) // Renamed pos to piecePos for clarity
 {
     validMoves.clear();
     ChessPiece *piece = board.getPiece(piecePos);

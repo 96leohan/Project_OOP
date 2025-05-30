@@ -40,6 +40,8 @@ public:
     // Hàm hủy ảo (virtual destructor) để đảm bảo giải phóng tài nguyên đúng cách khi làm việc với con trỏ đến lớp cơ sở
     virtual ~ChessPiece() = default;
 
+    virtual std::unique_ptr<ChessPiece> clone() const = 0; //
+
     // Phương thức ảo thuần túy (pure virtual function) để lấy tất cả các nước đi có thể của quân cờ
     // Các lớp con (Tốt, Mã, ...) sẽ phải triển khai phương thức này
     virtual std::vector<Position> getPossibleMoves(const ChessBoard &board) const = 0;
