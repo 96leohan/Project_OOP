@@ -9,7 +9,7 @@ enum class PieceType { Pawn, Knight, Bishop, Rook, Queen, King };
 
 class Piece {
 public:
-    Piece(Color color, std::unique_ptr<MoveValidator> validator);
+    Piece(Color color, std::unique_ptr<MoveValidator> validator); // DI for validator
     virtual ~Piece() = default;
     virtual std::unique_ptr<Piece> clone() const = 0;
     virtual std::string getSymbol() const = 0;
