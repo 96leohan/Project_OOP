@@ -133,13 +133,19 @@ std::vector<std::pair<Position, Position>> AIPlayer::getAllValidMoves(const Ches
             // Kiểm tra xem vị trí có quân cờ của màu hiện tại không
             if (piece && piece->getColor() == color)
             {
-                // Lấy tất cả nước đi có thể của quân cờ này
+                // Lấy tất cả nước đi "pseudo-legal" của quân cờ này
+                // (những nước đi hợp lệ theo luật di chuyển của quân, không quan tâm đến chiếu)
                 auto possibleMoves = piece->getPossibleMoves(board);
 
-                // Kiểm tra từng nước đi xem có hợp lệ không
+                // Kiểm tra từng nước đi xem có hợp lệ hoàn toàn không (bao gồm cả việc không tự chiếu)
                 for (const auto &to : possibleMoves)
                 {
-                    if (piece->isValidMove(board, to))
+                    // Tạo một bản sao của bàn cờ để thử nước đi
+                    ChessBoard tempBoard = board;
+                    // Thử di chuyển quân cờ trên bản sao.
+                    // Hàm movePiece() của ChessBoard giờ đây sẽ có trách nhiệm kiểm tra xem
+                    // nước đi có hợp lệ hoàn toàn hay không, bao gồm cả việc có bị tự chiếu hay không.
+                    if (tempBoard.movePiece(from, to))
                     {
                         allMoves.push_back(std::make_pair(from, to));
                     }
