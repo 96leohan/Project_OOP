@@ -1,11 +1,19 @@
 #pragma once
-#include "Position.h"
-#include "Board.h"
+#include <string>
 
-class Board; // Forward declaration
-
-class MoveValidator {
+class Position {
 public:
-    virtual ~MoveValidator() = default;
-    virtual bool isValid(const Position& from, const Position& to, const Board& board) const = 0;
+    Position(int row, int col) : row(row), col(col) {}
+    int getRow() const { return row; }
+    int getCol() const { return col; }
+    std::string toString() const {
+        return std::string(1, 'a' + col) + std::to_string(row + 1);
+    }
+    bool operator==(const Position& other) const {
+        return row == other.row && col == other.col;
+    }
+
+private:
+    int row;
+    int col;
 };
