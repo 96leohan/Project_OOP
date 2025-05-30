@@ -16,7 +16,7 @@ void ui::ConsoleRenderer::render(const Board& board) {
 }
 
 void ui::ConsoleRenderer::highlightMove(const Position& from, const Position& to) {
-    std::cout << "Highlighted: " << from.toString() << " -> " << to.toString() << "\n";
+    std::cout << "Moved: " << from.toString() << " -> " << to.toString() << "\n";
 }
 
 void ui::ConsoleRenderer::clearScreen() const {
