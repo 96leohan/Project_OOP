@@ -1,4 +1,3 @@
-// source_code/src/chess/PieceFactory.cpp
 #include "PieceFactory.h"
 #include "Pawn.h"
 #include "Knight.h"
