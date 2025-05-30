@@ -8,6 +8,4 @@ public:
 
 private:
     Color color_;
-    bool isDoubleMove(const Position& from, const Position& to) const;
-    bool isCapture(const Position& from, const Position& to, const Board& board) const;
 };
