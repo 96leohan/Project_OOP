@@ -1,4 +1,3 @@
-// source_code/src/chess/Game.cpp
 #include "Game.h"
 #include "PlayingState.h"
 #include "MoveCommand.h"
