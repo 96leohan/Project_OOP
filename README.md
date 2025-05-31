@@ -9,7 +9,7 @@
 ### 1. Thành viên nhóm
 
 - Trần Hà Lê Hân - 22120092
-- Phạm Phúc An Khang - 20120303
+- Phạm Phúc An Khang - 20120303 - Nhóm trưởng
 
 ---
 
@@ -34,15 +34,13 @@
 
 - Xây dựng chức năng, giao diện UI của chương trình.
 - Vẽ Class Diagram.
-- Thực hiện demo ứng dụng.
-- Đóng gói các thư mục và nộp bài.
 
 ---
 
 ### 3. Tỉ lệ đóng góp của các thành viên vào dự án (tổng 100%)
 
-- Phạm Phúc An Khang: 55%
-- Trần Hà Lê Hân: 45%
+- Phạm Phúc An Khang: 60%
+- Trần Hà Lê Hân: 40%
 
 ---
 
@@ -54,15 +52,15 @@
 
 ### 5. Cách thức đánh giá và tính năng nổi bật
 
-#### 🧑‍🤝‍🧑 Teamwork: Đã thực hiện tốt
+#### 🧑‍🤝‍🧑 Teamwork:
 
-- Phân công và theo dõi tiến độ công việc.
-- Ghi chép biên bản họp nhóm.
+- Phân công và theo dõi tiến độ công việc: Nhóm trưởng thực hiện, đã nhắc nhở thành viên đều đặn làm đồ án hằng tuần.
+- Ghi chép biên bản họp nhóm: Nhóm trưởng thực hiện.
+- Mức độ commit: [https://github.com/96leohan/Project_OOP/graphs/contributors](https://github.com/96leohan/Project_OOP/graphs/contributors)
+  - Phạm Phúc An Khang: 29 commits, thêm 7,951 dòng, xóa 4,110 dòng.
+  - Trần Hà Lê Hân: 116 commits, thêm 1,534 dòng, xóa 1,286 dòng.
 
 #### 🎨 UI/UX:
-
-- Giao diện chương trình thân thiện, rõ ràng.
-- Cung cấp trải nghiệm người dùng mượt mà.
 
 #### 🧱 Cài đặt lại chức năng của mã nguồn mẫu theo hướng đối tượng: Đã hoàn thành
 
@@ -143,5 +141,6 @@
 
 ### 📄 Tài liệu mô tả kiến trúc phần mềm và các module
 
-- Vẽ Class Diagram bằng Mermaid: Đã hoàn thành.
+- Vẽ Class Diagram bằng Mermaid: [https://www.mermaidchart.com/play?utm*source=mermaid_live_editor&utm_medium=toggle#pako:eNq9WFFv2zYQ_iuEgQLyEj_sbRCCAEuKrca6Lkva7aEpDEZibCIyKZB0Mq_Lf9-RFKWjRNle5yQIEon38Xh3_Hh31NdJIUs2ySdFRbV-y-lS0fWtuBUEft68IZcrpjW5osUDXTKS_UzXjLyXS15MPcRNI1dSc8OlIF_9qP2ZcWGIkk-9kUJW3cjJkplr-ZRNCYji4UtZDYaNvDGKiyUItHvwsudgrzcGZkqFLTk7Y2KzZopaE8_PO8GfK25Y93pRgZtJlVecFezjtmYHqb2iT6J7-0Xw5Qp5ccH1Stbd-7WUD93b7xvG8OQxJ51FsTX0DoJCC4NNmflgFPbvAg3_Kh_ZH7TiJTUgfgxPCHLSDDILze6VXOftNp8SI_HbnaSqzMmF_TeFt_4WOyNg09x_JCoqKRiMO2fiKTfb9Z1jwI6NtnHGIfi*-vxOHVOj3-tjarRsOaY-x7ejBhEEx9QXM3Uv4U-4duhvZGyCYcnFR87VcVf3fEyuf9yFPE1fYSHL3ldYxpH6FdaxXH-N7bHyiH1LxcvPP3yB38GxqqGIMTeY1fZv7hGnpJa6W3uKZqzhhPkJu6wd5PXGxb3lIVUQGvsiiwaecAECWOJv5gKQTaPFoTEpHtZQnzJ3CHNfXBJWOuAoKFVWf4KcItU2zmKKwVrebgONQN71BKckVo78eMadlFyvqSghpxjDVK9j8aL92Y39xYoN-IxjsRGlDAOJ5JlQPvOMcvTDXUHbxtn9TAqMjIZdE1LQ2mwUKxeOb0O55ddQeLgrELsbA8FPRc72o164P3YriELFsiVMyd3Eaa8aWT0fYHxP11HRLcgGqx5Lv-Pry2q3x-YFVoCN-u1OM*XIVGqvPs0_SMPvOeuVcejxmbqHrBXtlrDY7f7skvTSXVMOIPw1EyVTYJBqHrBwLuqNeeeCouAiAi8LH6II1Xn1-QsRzaNeRK2CO4AgLvzTYsW1TTAY1BFZ27-LYauxUWCk-bhRYhHvy1zAFFHYbbFakhk0Cw7mJPh8GvuUE-wv3npalsHFLDiYo93EWLBEmehIN8e8CULWhCAPOa9*-t9TbdymR1ob8mUuNnl36nsMvexilLhtAKApJL6iDtn7aR5uulHTEkhyAGt9mLOosOMjBg1dZZu6b-T1pRRaVixl0Usv_S7MZ2Vq-e4oPSla15DwU0eqrSOg0ixGq4yTxqXGVmyyonrhZLakLF7P9-DbeGMQEE1v4NPjtJ2Y1BrllwO4Bfz1J6OzPTzsIsvYMv9BHxyNa1a57xx6xWvdjs7Fiinuso8f8xX_7J_ZDH0FQYP4Ywgaxt9E0HD3aQQNoi8kWHFbjuILY2tKOzSK6l23RnG929IoLrrsjKLiu8q4cfiq4VGhsXNy1Ol5aVdQfAhQ15IEdG3HuLjtGzykPfIeEeemFCSRQzws4ijWhgWIjT9qLQvuCUlsDN6y2ioUBWcac-O72eyc3E6-v530gpqTjY6hFulLbW4TjRf5vqHRAsHdgiIPz6GaC0O5iJAW2KYxvIbrSJA1Hp4T0AnlZgTURm-Xpih2Y8DGdNSC5aFZGUcHguWkKeIjFnRUQZFzIBxT25A_6I7gQbvFtNGQJTKpj0oGNlWX0iEsWSEVbb1oJdgAX0hSCLR4W050gr09rGJwNxKYaKGIOGCgkisiO1Hu6_OAtRgWAm0hk-d_AYRZbBc](https://)
+
 - Thư viện SFML cho giao diện đồ họa.
