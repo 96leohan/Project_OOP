@@ -1,10 +1,8 @@
-# -Project_OOP
+# BÁO CÁO DỰ ÁN CUỐI KỲ - MÔN LẬP TRÌNH HƯỚNG ĐỐI TƯỢNG (OOP)
 
-# Mã nguồn lựa chọn
+## Game Cờ Vua
 
-## Game cờ vua
-
-🔗 [Video Demo trên YouTube](https://www.youtube.com/watch?v=_4EuZI8Q8cs)
+🔗 [Video ứng dụng gốc](https://www.youtube.com/watch?v=_4EuZI8Q8cs)
 
 ---
 
@@ -15,92 +13,86 @@
 
 ---
 
-### 2. Các công việc các thành viên đã thực hiện
+### 2. Các công việc thành viên đã thực hiện
 
 **An Khang:**
 
-- Cấu trúc dự án git, viết file markdown
-- Cài đặt lại tính năng cơ bản của ứng dụng theo phương pháp hướng đối tượng với coding convention
-  - Cài đặt logic cơ bản các quân cờ, bàn cờ
+- Cấu trúc dự án Git, viết file Markdown.
+- Cài đặt lại tính năng cơ bản của ứng dụng theo phương pháp hướng đối tượng với coding convention:
+  - Cài đặt logic cơ bản các quân cờ, bàn cờ.
   - Cài đặt các logic bổ sung:
     - Nhập thành (Castling)
     - Bắt quân qua đường (En Passant)
     - Phong cấp (Pawn Promotion)
     - Chiếu và Chiếu hết (Check & Checkmate)
     - Hòa cờ (Stalemate)
-  - Cài đặt chức năng hàm main, vòng lặp chính của chương trình
-- Triển khai chức năng chơi với máy (AI Opponent)
-- Ghi chép biên bản họp nhóm
+  - Cài đặt chức năng hàm main, vòng lặp chính của chương trình.
+- Triển khai chức năng chơi với máy (AI Opponent).
+- Ghi chép biên bản họp nhóm.
 
 **Lê Hân:**
 
-- Cấu trúc dự án git
+- Xây dựng chức năng, giao diện UI của chương trình.
+- Vẽ Class Diagram.
+- Thực hiện demo ứng dụng.
+- Đóng gói các thư mục và nộp bài.
 
 ---
 
 ### 3. Tỉ lệ đóng góp của các thành viên vào dự án (tổng 100%)
 
-_(Nội dung cần bổ sung cụ thể)_
+- Phạm Phúc An Khang: 55%
+- Trần Hà Lê Hân: 45%
 
 ---
 
 ### 4. Tỉ lệ điểm của các thành viên
 
-_(Nội dung cần bổ sung cụ thể)_
+- Chia 10 - 9
 
 ---
 
-### 5. Cách thức đánh giá
+### 5. Cách thức đánh giá và tính năng nổi bật
 
-Mô tả cụ thể cho các yêu cầu
+#### 🧑‍🤝‍🧑 Teamwork: Đã thực hiện tốt
 
-#### 🧑‍🤝‍🧑 Teamwork: thực hiện tốt
+- Phân công và theo dõi tiến độ công việc.
+- Ghi chép biên bản họp nhóm.
 
-- Phân công và theo dõi tiến độ công việc
-- Ghi chép biên bản họp nhóm
+#### 🎨 UI/UX:
 
-#### 🎨 UI/UX: chưa hoàn thành
+- Giao diện chương trình thân thiện, rõ ràng.
+- Cung cấp trải nghiệm người dùng mượt mà.
 
-- Giao diện chương trình thân thiện, rõ ràng
-- Cung cấp trải nghiệm người dùng mượt mà
-
-#### 🧱 Cài đặt lại chức năng của mã nguồn mẫu theo hướng đối tượng
+#### 🧱 Cài đặt lại chức năng của mã nguồn mẫu theo hướng đối tượng: Đã hoàn thành
 
 #### 🔧 Các chức năng thêm và cải tiến
 
-##### ✅ Cải thiện gameplay: đã hoàn thiện
+##### ✅ Cải thiện Gameplay: Đã hoàn thiện
 
 - **Nhập thành (Castling)**: Kiểm tra đầy đủ các điều kiện nhập thành:
-  - Không có quân cản
-  - Vua và xe chưa từng di chuyển
-  - Vua không bị chiếu hoặc đi qua ô bị chiếu
+  - Không có quân cản.
+  - Vua và xe chưa từng di chuyển.
+  - Vua không bị chiếu hoặc đi qua ô bị chiếu.
 - **Bắt quân qua đường (En Passant)**
 - **Phong cấp (Pawn Promotion)**
 - **Chiếu và Chiếu hết (Check & Checkmate)**
 - **Hòa cờ (Stalemate)**
 
-##### 📜 Ghi lại lịch sử ván cờ (Move History): chưa hoàn thành
+##### 📜 Ghi lại lịch sử ván cờ (Move History): Đã hoàn thành
 
-- Lưu danh sách các nước đi đã thực hiện
+##### 🤖 Chơi với máy (AI Opponent): Đã hoàn thiện
 
-##### ⏱️ Hẹn giờ (Timers): chưa hoàn thành
+##### 🧩 Cải thiện giao diện người dùng: Đã hoàn thành
 
-- Đồng hồ đếm ngược với các chế độ: blitz, rapid, classical
-
-##### 🤖 Chơi với máy (AI Opponent): đã hoàn thiện
-
-- Đối thủ AI có nhiều cấp độ khó
-
-##### 🧩 Cải thiện giao diện người dùng: chưa hoàn thành
-
-- Hiển thị nước đi hợp lệ
+- Hiển thị nước đi hợp lệ.
 - Thông báo và phản hồi các sự kiện: nước đi sai, chiếu, chiếu hết...
-- Thêm chức năng đầu hàng, restart trận đấu
-- Thêm màn hình Home
-- Thêm menu setting bao gồm: chỉnh độ khó, chọn chế độ, credit, nút thoát ứng dụng (exit),
-- Ngôn ngữ: Lựa chọn ngôn ngữ hiển thị trong trò chơi, tiếng Anh và Tiếng Việt
+- Thêm chức năng đầu hàng, restart trận đấu.
+- Thêm màn hình Home.
+- Thêm menu cài đặt bao gồm: chỉnh độ khó, chọn chế độ chơi, credit, nút thoát ứng dụng.
+- Ngôn ngữ: Lựa chọn ngôn ngữ hiển thị trong trò chơi (tiếng Anh và Tiếng Việt).
 - Thống kê: Số ván đã chơi, số ván thắng, thua, hòa.
-- Hướng dẫn/Luật chơi (Tutorial/Rules - tùy chọn):cung cấp thông tin về luật chơi cờ vua cho người mới bắt đầu.
+- Hướng dẫn/Luật chơi (Tutorial/Rules - tùy chọn): Cung cấp thông tin về luật chơi cờ vua cho người mới bắt đầu.
 
 #### 🧭 Giao diện bố trí hợp lý
 
@@ -113,7 +105,7 @@ Mô tả cụ thể cho các yêu cầu
 ###### 1. Quy tắc đặt tên (Naming Conventions)
 
 | Đối tượng      | Quy tắc                       | Ví dụ                       |
-| -------------- | ----------------------------- | --------------------------- |
+| :------------- | :---------------------------- | :-------------------------- |
 | Biến           | `camelCase`                   | `playerScore`, `maxSpeed`   |
 | Hằng số        | `UPPER_CASE_WITH_UNDERSCORES` | `MAX_BUFFER_SIZE`, `PI`     |
 | Hàm            | `camelCase`                   | `calculateDistance()`       |
@@ -123,64 +115,45 @@ Mô tả cụ thể cho các yêu cầu
 
 ###### 2. Quy tắc định dạng (Formatting)
 
-- `{` mở ở cùng dòng hoặc dòng mới (nhất quán theo style đã chọn)
-- Có dấu cách sau: `,`, `if`, `for`, `while`, `switch`
-- Thụt lề: 4 spaces, **không dùng tab**
+- `{` mở ở cùng dòng hoặc dòng mới (nhất quán theo style đã chọn).
+- Có dấu cách sau: `,`, `if`, `for`, `while`, `switch`.
+- Thụt lề: 4 spaces, **không dùng tab**.
 
 ###### 3. Cấu trúc chương trình
 
-- Dùng include guard
-- Tách `.h` (khai báo) và `.cpp` (định nghĩa)
-- Dùng forward declaration nếu có thể
+- Dùng include guard.
+- Tách `.h` (khai báo) và `.cpp` (định nghĩa).
+- Dùng forward declaration nếu có thể.
 
 ###### 4. Quy tắc lập trình (Best Practices)
 
-- Không dùng `using namespace std;` trong header
-- Sử dụng `const`, `constexpr`, `noexcept` đúng chỗ
-- Dùng `unique_ptr`, `shared_ptr` thay cho con trỏ raw (C++11+)
-- Dùng `nullptr` thay `NULL`
-- Kiểm tra `nullptr` trước khi dùng
-- Tránh lặp code — viết hàm hỗ trợ
-- Gom nhóm hàm liên quan
-- Ưu tiên `enum class` thay vì `enum`
+- Không dùng `using namespace std;` trong header.
+- Sử dụng `const`, `constexpr`, `noexcept` đúng chỗ.
+- Dùng `unique_ptr`, `shared_ptr` thay cho con trỏ raw (C++11+).
+- Dùng `nullptr` thay `NULL`.
+- Kiểm tra `nullptr` trước khi dùng.
+- Tránh lặp code — viết hàm hỗ trợ.
+- Gom nhóm hàm liên quan.
+- Ưu tiên `enum class` thay vì `enum`.
 
 ###### 5. Quy tắc comment
 
-- `//` cho ghi chú thông thường
-- `/** */` hoặc `///` cho documentation (Doxygen)
-
-###### 6. Tổ chức file
-
-**Trong file `.h`:**
-
-```cpp
-// 1. Include guard hoặc #pragma once
-// 2. Includes cần thiết
-// 3. Forward declaration
-// 4. Khai báo class, typedef, enum
-```
-
-**Trong file `.cpp`:**
-
-```cpp
-/// 1. Include chính (.h tương ứng)
-// 2. Các include còn lại
-// 3. Implementation
-```
+- `//` cho ghi chú thông thường.
+- `/** */` hoặc `///` cho documentation (Doxygen).
 
 ### 🧪 Kiểm thử bằng Unit Test
 
-Xây dựng Test Plan
-Viết Test Case
-Tạo Test Report
+- Xây dựng Test Plan.
+- Viết Test Case.
+- Tạo Test Report.
 
 ### 📄 Tài liệu mô tả kiến trúc phần mềm và các module
 
-Vẽ Class Diagram
-Tạo tài liệu mô tả:
-Các lớp trong hệ thống
-Ý nghĩa các hàm chính
+- Vẽ Class Diagram bằng Mermaid: Đã hoàn thành.
+- Thư viện SFML cho giao diện đồ họa.
 
-### 6 Link video demo
+---
 
-🔗 Link video demo
+### 6. Link video demo
+
+🔗 [Link video demo trên YouTube]
