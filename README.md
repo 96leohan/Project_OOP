@@ -145,9 +145,3 @@
 
 - Vẽ Class Diagram bằng Mermaid: Đã hoàn thành.
 - Thư viện SFML cho giao diện đồ họa.
-
----
-
-### 6. Link video demo
-
-🔗 [Link video demo trên YouTube]
