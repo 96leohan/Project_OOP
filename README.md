@@ -141,12 +141,6 @@
 - `//` cho ghi chú thông thường.
 - `/** */` hoặc `///` cho documentation (Doxygen).
 
-### 🧪 Kiểm thử bằng Unit Test
-
-- Xây dựng Test Plan.
-- Viết Test Case.
-- Tạo Test Report.
-
 ### 📄 Tài liệu mô tả kiến trúc phần mềm và các module
 
 - Vẽ Class Diagram bằng Mermaid: Đã hoàn thành.
